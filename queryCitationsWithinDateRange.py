@@ -1,6 +1,15 @@
-import opencitingpy
+from pmidcite.icite.downloader import get_downloader
+import pmidcite.citation as citation
 
-client = opencitingpy.client.Client()
-dois = ['10.3390/s19020353', '10.1016/j.jacc.2023.11.003']
-# get metadata of a list of articles, including title, publication year, number of citing and cited documents, etc.
-metadata = client.get_metadata(dois)
+dnldr = get_downloader(details_cites_refs="all")
+
+pmid = 21173362
+paper = dnldr.get_paper(pmid)
+cites = paper.cited_by
+
+
+for cite in cites:
+    print(cite.dct)
+    continue
+
+print(len(cites))
