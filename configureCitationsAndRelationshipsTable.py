@@ -7,16 +7,13 @@ import datetime
 from dateutil import parser
 
 server = "localhost"
-user = "ts06067"
-password = "Dream2002!"
+user = "sa"
+password = "Password1!"
 db = "ba"
 dnldr = get_downloader(details_cites_refs="citations")
 
 conn = pymssql.connect(server, user, password, database=db)
 cursor = conn.cursor(as_dict=True)
-
-from_idx = int(sys.argv[1])
-to_idx = int(sys.argv[2])
 
 query = f"""
 select * from dbo.paper order by citedby_count desc
@@ -34,13 +31,15 @@ insert_relationships_query = "insert into dbo.relationship values (%s, %s, %s)"
 select_papers_query = "select paper_id from dbo.paper where doi = (%s)"
 select_citations_query = "select citing_id from dbo.citation where doi = (%s)"
 
-rows = rows[from_idx : to_idx + 1]
-
 for row in tqdm(rows):
     try:
         source_paper_id = int(row["paper_id"])
         source_pmid = int(row["pmid"])
         source_doi = str(row["doi"])
+        source_type_description = str(row["type_description"])
+
+        if source_type_description != 'ar':
+            continue
 
         if source_pmid == 0:
             continue
@@ -50,6 +49,7 @@ for row in tqdm(rows):
 
         now = datetime.datetime.now()
 
+        # get source's citations
         paper = dnldr.get_paper(source_pmid)
         cited_by = paper.cited_by
 

@@ -2,8 +2,8 @@ import pymssql
 import pandas
 
 server = "localhost"
-user = "ts06067"
-password = "Dream2002!"
+user = "sa"
+password = "Password1!"
 db = "ba"
 
 conn = pymssql.connect(server, user, password, database=db)
