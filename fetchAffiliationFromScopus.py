@@ -12,5 +12,4 @@ print(ab.affiliation)
 print(ab.citedby_count)
 print(ab.citedby_link)
 
-print(get_related('10.1167/18.8.6'))
 print(crossref_commons.retrieval.get_publication_as_json('10.5621/sciefictstud.40.2.0382'))
