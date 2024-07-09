@@ -18,16 +18,16 @@ accounts = [
      'password': 'Dream2002!'},
      {'username': 'y0unwoo88814',
      'password': 'Carpediem2002!'},
-     {'username': 'altmetric1001',
-     'password': 'altmetricpassword'},
-     {'username': 'altmetric1002',
-     'password': 'altmetricpassword'},
-     {'username': 'altmetric1003',
-     'password': 'altmetricpassword'},
-     {'username': 'altmetric1004',
-     'password': 'altmetricpassword'},
-     {'username': 'altmetric1005',
-     'password': 'altmetricpassword'}
+     {'username': 'y0unwoo88899961',
+     'password': 'Carpediem2002!'},
+     {'username': 'y0unwoo88838011',
+     'password': 'Carpediem2002!'},
+     {'username': 'y0unwoo88843694',
+     'password': 'Carpediem2002!'},
+     {'username': 'y0unwoo88856631',
+     'password': 'Carpediem2002!'},
+     {'username': 'y0unwoo88881513',
+     'password': 'Carpediem2002!'}
 ]
 
 print(f'number of accounts: {len(accounts)}')
@@ -48,7 +48,7 @@ user = "sa"
 password = "Password1!"
 db = "ba"
 
-conn = pymssql.connect(server, user, password, database=db)
+conn = pymssql.connect(server, user, password, database=db, autocommit=True)
 cursor = conn.cursor(as_dict=True)
 
 select_mention_query = "select post_external_id, post_date from mention where post_source = 'tweet' order by post_index"
@@ -106,7 +106,6 @@ for index, row in tqdm(df.iterrows(), total=df.shape[0]):
         p = (created_at, favorite_count, full_text, text, quote_count, lang, view_count, retweet_count, reply_count, raw_external_id)
 
         cursor.execute(update_mention_query, p)
-        conn.commit()
     except AttributeError as e:
         print('\nno tweet found')
         continue
