@@ -18,16 +18,16 @@ accounts = [
      'password': 'Dream2002!'},
      {'username': 'y0unwoo88814',
      'password': 'Carpediem2002!'},
-     {'username': 'y0unwoo88899961',
-     'password': 'Carpediem2002!'},
+     {'username': 'altmetric1001', # y0unwoo88899961, altmetric1001
+     'password': 'altmetricpassword'},
      {'username': 'y0unwoo88838011',
      'password': 'Carpediem2002!'},
-     {'username': 'y0unwoo88843694',
-     'password': 'Carpediem2002!'},
-     {'username': 'y0unwoo88856631',
-     'password': 'Carpediem2002!'},
-     {'username': 'y0unwoo88881513',
-     'password': 'Carpediem2002!'}
+     {'username': 'altmetric1002', # y0unwoo88843694, altmetric1002
+     'password': 'altmetricpassword'},
+     {'username': 'altmetric1003', # y0unwoo88856631, altmetric1003
+     'password': 'altmetricpassword'},
+     {'username': 'altmetric1004', # y0unwoo88881513, altmetric1004
+     'password': 'altmetricpassword'}
 ]
 
 print(f'number of accounts: {len(accounts)}')
